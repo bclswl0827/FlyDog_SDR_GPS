@@ -102,7 +102,7 @@ create_clock -period 10 -name BBB_SCLK -waveform {0.000 5.00} [get_ports BBB_SCL
 # 16.368 MHz
 create_clock -period 61.095 -name GPS_TCXO -waveform {0.000 30.548} [get_ports GPS_TCXO]
 
-# 125 MHz
+# 125.000000 MHz
 create_clock -period 8.000 -name ADC_CLKIN -waveform {0.000 4.000} [get_ports ADC_CLKIN]
 
 set_input_delay -clock [get_clocks ADC_CLKIN] -min -add_delay 1.300 [get_ports {ADC_DATA[*]}]

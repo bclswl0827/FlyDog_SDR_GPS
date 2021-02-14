@@ -76,8 +76,6 @@ bool create_eeprom, need_hardware, sdr_hu_debug, have_ant_switch_ext, gps_e1b_on
 char **main_argv;
 char *fpga_file;
 
-bool fdsdr = false;
-
 int main(int argc, char *argv[])
 {
 	int i;
@@ -204,9 +202,6 @@ int main(int argc, char *argv[])
 		if (strcmp(argv[i], "-p1")==0) { i++; p1 = strtol(argv[i], 0, 0); }
 		if (strcmp(argv[i], "-p2")==0) { i++; p2 = strtol(argv[i], 0, 0); }
 
-#ifdef PLATFORM_raspberrypi
-		if (strcmp(argv[i], "-fdsdr")==0) fdsdr = true;
-#endif
 		i++;
 		while (i<argc && ((argv[i][0] != '+') && (argv[i][0] != '-'))) {
 			i++;
@@ -303,9 +298,7 @@ int main(int argc, char *argv[])
         lprintf("firmware: GPS_ONLY\n");
     } else
         panic("fw_sel");
-
-    if (fdsdr) rx_decim *= 2;
-
+    
     asprintf(&fpga_file, "rx%d.wf%d", rx_chans, wf_chans);
     
     bool no_wf = cfg_bool("no_wf", &err, CFG_OPTIONAL);
@@ -345,9 +338,9 @@ int main(int argc, char *argv[])
 
 	if (need_hardware) {
 		peri_init();
-		eeprom_update();
 		fpga_init();
 		//pru_start();
+		eeprom_update();
 		
 		bool ext_ADC_clk = cfg_bool("ext_ADC_clk", &err, CFG_OPTIONAL);
 		if (err) ext_ADC_clk = false;

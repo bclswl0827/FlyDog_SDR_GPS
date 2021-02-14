@@ -961,24 +961,10 @@ else
 	install -D -o root -g root $(BUILD_DIR)/kiwid.bin /usr/local/bin/kiwid
 	install -D -o root -g root $(GEN_DIR)/kiwi.aout /usr/local/bin/kiwid.aout
 #	install -D -o root -g root $(GEN_DIR)/kiwi_realtime.bin /usr/local/bin/kiwid_realtime.bin
-	#install -D -o root -g root KiwiSDR.rx4.wf4.bit /usr/local/bin/KiwiSDR.rx4.wf4.bit
-	#install -D -o root -g root KiwiSDR.rx8.wf2.bit /usr/local/bin/KiwiSDR.rx8.wf2.bit
-	#install -D -o root -g root KiwiSDR.rx3.wf3.bit /usr/local/bin/KiwiSDR.rx3.wf3.bit
-	#install -D -o root -g root KiwiSDR.rx14.wf0.bit /usr/local/bin/KiwiSDR.rx14.wf0.bit
-#	Firmwares for FlyDog SDR
-	install -D -o root -g root FlyDogSDR.rx4.wf4.bit /usr/local/bin/FlyDogSDR.rx4.wf4.bit
-	install -D -o root -g root FlyDogSDR.rx8.wf2.bit /usr/local/bin/FlyDogSDR.rx8.wf2.bit
-	install -D -o root -g root FlyDogSDR.rx3.wf3.bit /usr/local/bin/FlyDogSDR.rx3.wf3.bit
-	install -D -o root -g root FlyDogSDR.rx14.wf0.bit /usr/local/bin/FlyDogSDR.rx14.wf0.bit
-#
-	#install -o root -g root unix_env/kiwid /etc/init.d
-	#install -o root -g root -m 0644 unix_env/kiwid.service /etc/systemd/system
-ifneq ($(RPI), true)
-	install -D -o root -g root -m 0644 unix_env/$(CAPE).dts /lib/firmware/$(CAPE).dts
-	install -D -o root -g root -m 0644 unix_env/$(SPI).dts /lib/firmware/$(SPI).dts
-	install -D -o root -g root -m 0644 unix_env/$(PRU).dts /lib/firmware/$(PRU).dts
-endif
-#
+	install -D -o root -g root KiwiSDR.rx4.wf4.bit /usr/local/bin/KiwiSDR.rx4.wf4.bit
+	install -D -o root -g root KiwiSDR.rx8.wf2.bit /usr/local/bin/KiwiSDR.rx8.wf2.bit
+	install -D -o root -g root KiwiSDR.rx3.wf3.bit /usr/local/bin/KiwiSDR.rx3.wf3.bit
+	install -D -o root -g root KiwiSDR.rx14.wf0.bit /usr/local/bin/KiwiSDR.rx14.wf0.bit
 	install -D -o root -g root $(GEN_DIR)/noip2 /usr/local/bin/noip2
 #
 	install -D -o root -g root -m 0644 $(DIR_CFG_SRC)/frpc.template.ini $(DIR_CFG)/frpc.template.ini
